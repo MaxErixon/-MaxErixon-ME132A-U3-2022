@@ -11,15 +11,13 @@ body {
 
 #searchbar{
     margin: 15px;
-    border: black solid 2px;
     width: fit-content;
     
 }
 
 .results{
-    margin: 15px;
-    border: solid 3px black;
-    
+  
+    margin: 10px;
 }
 
 #kurs{
@@ -29,3 +27,25 @@ body {
     padding: 5px;
     
 }
+
+.passedcourse{
+    width: fit-content;
+    background-color: green;
+    color: white;
+    
+}
+
+.resultstudent{
+ background-color: beige;
+ margin: 15px;
+ border: dotted 5px black;
+}
+
+.resultstudent div {
+    margin: 10px;
+}
+
+.results ~ p{
+    margin: 10px;
+}
+   
