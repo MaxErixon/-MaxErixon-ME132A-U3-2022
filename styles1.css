@@ -38,10 +38,14 @@ body {
 
 .resultcourse{
  background-color: beige;
- margin: 15px;
- border: dotted 5px black;
+ font-size: 25px;
+font-weight: bold;
+text-align: center;
+padding: 15px;
 }
 
-
-   
+.studentWrapper{
+    border-bottom: solid 6px red;
+    margin-bottom: 20px;
+}
 

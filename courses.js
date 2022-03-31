@@ -92,7 +92,55 @@ function renderCourse (course) {
 
     teachersWrapper.appendChild(teacherDiv);
   }
+  let studentWrapper = document.createElement("div");
+  studentWrapper.classList.add("studentWrapper");
+  wrapper.appendChild(studentWrapper);
+
+  let studentTitle = document.createElement("h3");
+  studentTitle.innerText = "Students:";
+  studentWrapper.appendChild(studentTitle);
+
+  studentTitle.style.gridColumn = "1/5";
+
+  let foundStudents = getStudentById(course);
+
+  let foundStudentCourse = [];
+
+  for (let student of foundStudents) {
+    for (let courseArray of student.courses) {
+      if (courseArray.courseId == course.courseId) {
+        foundStudentCourse.push(courseArray);
+      }
+    }
   }
+
+  for (let i = 0; i < foundStudents.length; i++) {
+    let studentDiv = document.createElement("div");
+
+    studentWrapper.appendChild(studentDiv);
+
+    studentDiv.classList.add("students", "courseStudents");
+
+    studentDiv.innerText =
+      foundStudents[i].firstName +
+      " " +
+      foundStudents[i].lastName +
+      " (" +
+      foundStudentCourse[i].passedCredits +
+      " credits " +
+      ") " +
+      "\n" +
+      foundStudentCourse[i].started.semester +
+      " " +
+      foundStudentCourse[i].started.year;
+
+    if (course.totalCredits == foundStudentCourse[i].passedCredits) {
+      studentDiv.style.backgroundColor = "green";
+      studentDiv.style.color = "white"
+
+    }
+  }
+}
 
 
 function createHTML (courses) {
@@ -103,54 +151,7 @@ function createHTML (courses) {
 
 }
 
-// function courseResponsible (id) {
-//     let allTeachers = DATABASE.teachers
-//     let course = DATABASE.courses[id]
-//     let teachersNames = allTeachers.map((teacher) => teacher.firstName + " " + teacher.lastName + " " + teacher.post)
-//     let res = course.courseResponsible
-//     return teachersNames[res]
-// }
 
-
-
-// function getStudentById (course) {
-//     let foundStudents = []
-  
-//     for (let i = 0; i < student.courses.length; i++) {
-//       foundCourses.push(
-//         DATABASE.courses.find(course => {
-//           return course.courseId == student.courses[i].courseId
-//         })
-//       )
-//     }
-//     return foundCourses
-//   }
-
-
-
-//   function findTeachers(courses){
-//     let teacherBox = [];
-//     for (let i = 0; i < DATABASE.teachers.length; i++) {
-//         let div = document.createElement("div")
-//         if (DATABASE.teachers[i] == courses.teachers[0]){
-//             let text = div.innerHTML = DATABASE.teachers[i].firstName + DATABASE.teachers[i].lastName;
-//             teacherBox.push(text)
-
-//         }
-//         else if(DATABASE.teachers[i] == courses.teachers[1]){
-//             let text = div.innerHTML = DATABASE.teachers[i].firstName + DATABASE.teachers[i].lastName;
-//             teacherBox.push(text)
-
-//         }
-//         else if (DATABASE.teachers[i] == courses.teachers[2]){
-//             let text = div.innerHTML = DATABASE.teachers[i].firstName + DATABASE.teachers[i].lastName;
-//             teacherBox.push(text)
-
-//         }
-        
-//     }
-//     return teacherBox.toString().split(",").join("");
-//   }
 
 function findResponsible(course) {
     let foundResponsible = [];
@@ -177,3 +178,19 @@ function findResponsible(course) {
   
     return foundTeacher;
   }
+
+
+
+  function getStudentById(course) {
+  let foundStudent = [];
+
+  for (let student of DATABASE.students) {
+    for (studentCourse of student.courses) {
+      if (studentCourse.courseId == course.courseId) {
+        foundStudent.push(student);
+      }
+    }
+  }
+
+  return foundStudent;
+}
