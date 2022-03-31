@@ -1,51 +1,75 @@
 body {
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#wrapper{
-    border: solid 5px black;
-    margin: 5px;
-    height: fit-content;
-    
+#wrapper {
+  border: solid 5px black;
+  margin: 5px;
+  height: fit-content;
 }
 
-#searchbar{
-    margin: 15px;
-    width: fit-content;
-    
+#searchbar {
+  margin: 15px;
+  width: fit-content;
 }
 
-.results{
-  
-    margin: 10px;
+.results {
+  margin: 10px;
 }
 
-#kurs{
-    margin: 5px;
-    border: solid 3px wheat;
-    width: fit-content;
-    padding: 5px;
-    
+#kurs {
+  margin: 5px;
+  border: solid 3px wheat;
+  width: fit-content;
+  padding: 5px;
+}
+@font-face {
+  font-family: "Sucrose Bold Two";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/sucrose.woff2")
+    format("woff2");
 }
 
-.passedcourse{
-    width: fit-content;
-    background-color: green;
-    color: white;
-    
+.resultcourse {
+  background-color: beige;
+  font-size: 25px;
+  text-align: center;
+  padding: 15px;
+  font-family: "Sucrose Bold Two";
+  text-decoration: underline;
 }
 
-.resultcourse{
- background-color: beige;
- font-size: 25px;
-font-weight: bold;
-text-align: center;
-padding: 15px;
+.studentWrapper {
+  border-bottom: solid 6px red;
+  display: grid;
+  margin: 5px;
+  margin-bottom: 50px;
 }
 
-.studentWrapper{
-    border-bottom: solid 6px red;
-    margin-bottom: 20px;
+.responsibleDiv {
+  background-color: rgb(54, 54, 248);
+  color: white;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 20px;
+  border: black solid 3px;
 }
 
+.students {
+  background-color: rgb(238, 133, 133);
+  margin: 5px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: solid 3px black;
+}
+
+.teacherDiv {
+  border-radius: 20px;
+  border: solid black 3px;
+  width: fit-content;
+  padding: 5px;
+  margin: 5px;
+}

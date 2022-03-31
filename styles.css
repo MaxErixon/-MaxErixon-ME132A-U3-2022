@@ -1,62 +1,62 @@
 body {
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#wrapper{
-    border: solid 5px black;
-    margin: 5px;
-    height: fit-content;
-    
+#wrapper {
+  border: solid 5px black;
+  margin: 5px;
+  height: fit-content;
 }
 
-#searchbar{
-    margin: 15px;
-    width: fit-content;
-    
+#searchbar {
+  margin: 15px;
+  width: fit-content;
 }
 
-.results{
-  
-    margin: 10px;
+.results {
+  margin: 10px;
 }
 
-#kurs{
-    margin: 5px;
-    border: solid 3px wheat;
-    width: fit-content;
-    padding: 5px;
-    
+#kurs {
+  margin: 5px;
+  border: solid 3px wheat;
+  width: fit-content;
+  padding: 5px;
 }
 
-.passedcourse{
-    width: fit-content;
-    background-color: green;
-    color: white;
-    
+.passedcourse {
+  width: fit-content;
+  background-color: green;
+  color: white;
 }
 
-.resultstudent{
- background-color: beige;
- margin: 15px;
- border: dotted 5px black;
+.resultstudent {
+  background-color: beige;
+  margin: 15px;
+  border: solid 5px rgb(238, 133, 133);
+  border-radius: 20px;
+  width: 60vw;
 }
 
 .resultstudent div {
-    margin: 10px;
+  margin: 10px;
+  border: black solid 1px;
+  padding: 5px;
+  width: fit-content;
+  border-radius: 20px;
 }
 
-.results1 ~ p{
-    margin: 10px;
-    font-weight: bold;
-    font-size: 20px;
-    
+.results1 ~ p {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.results1{
-    font-size: 25px;
-    font-weight: bold;
-    margin: 10px;
+.results1 {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px;
+  text-decoration: underline;
+  text-align: center;
 }
-   
-

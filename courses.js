@@ -1,48 +1,44 @@
-let form = document.getElementById("searchCourses")
+let form = document.getElementById("searchCourses");
 
-  
+form.addEventListener("keyup", function () {
+  let foundCourse = findCourse();
+  document.querySelector(".results").innerHTML = "";
+  createHTML(foundCourse);
+
+  if (form.value == "") {
+    document.querySelector(".results").innerHTML = "";
+  }
+});
+
 function findCourse() {
-    let course = DATABASE.courses.filter((course) => course.title.toLowerCase().includes(form.value.toLowerCase()));
-    return course;
-    
-    
+  let course = DATABASE.courses.filter((course) =>
+    course.title.toLowerCase().includes(form.value.toLowerCase())
+  );
+  course.sort(function (a, b) {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  });
+
+  return course;
 }
 
+function renderCourse(course) {
+  let wrapper = document.querySelector(".results");
+  let div = document.createElement("div");
+  div.classList.add("resultcourse");
+  wrapper.appendChild(div);
+  let p = document.createElement("p");
+  p.classList.add("results1");
+  p.innerText =
+    course.title + " " + " - course credits: " + course.totalCredits;
+  div.appendChild(p);
 
-
-
-form.addEventListener('keyup', function () {
-    let foundCourse = findCourse();
-    document.querySelector(".results").innerHTML = "";
-    createHTML(foundCourse);
-  
-    if (form.value == ""){
-        document.querySelector(".results").innerHTML = "";
-    }
-  });
-    
-
-
-function renderCourse (course) {
-    // let studentCourse = getStudentCourses(student)
-    // let studentTotalCred = studentCourse.reduce(function (a, b) {
-    //   return a + b
-    // }, 0)
-  
-    let wrapper = document.querySelector(".results")
-    let div = document.createElement('div')
-    div.classList.add('resultcourse')
-    wrapper.appendChild(div)
-    let p = document.createElement('p')
-    p.classList.add('results1')
-    p.innerText =
-      course.title +
-      ' ' +
-      ' - course credits: ' +
-      course.totalCredits
-    div.appendChild(p)
-
-    let foundResponsible = findResponsible(course);
+  let foundResponsible = findResponsible(course);
 
   let responsibleWrapper = document.createElement("div");
   wrapper.appendChild(responsibleWrapper);
@@ -64,8 +60,7 @@ function renderCourse (course) {
 
     responsibleWrapper.appendChild(responsibleDiv);
   }
-  
-    
+
   let foundTeachers = findTeachers(course);
 
   let teachersWrapper = document.createElement("div");
@@ -88,7 +83,7 @@ function renderCourse (course) {
       foundTeachers[i].lastName +
       " (" +
       foundTeachers[i].post +
-      ") ";
+      ")";
 
     teachersWrapper.appendChild(teacherDiv);
   }
@@ -136,52 +131,45 @@ function renderCourse (course) {
 
     if (course.totalCredits == foundStudentCourse[i].passedCredits) {
       studentDiv.style.backgroundColor = "green";
-      studentDiv.style.color = "white"
-
+      studentDiv.style.color = "white";
+      studentDiv.style.padding = "5px";
     }
   }
 }
 
-
-function createHTML (courses) {
-   
-    for (let course of courses) {
-        renderCourse(course);
-    }   
-
+function createHTML(courses) {
+  for (let course of courses) {
+    renderCourse(course);
+  }
 }
-
-
 
 function findResponsible(course) {
-    let foundResponsible = [];
-  
-    for (let teacher of DATABASE.teachers) {
-      if (teacher.teacherId == course.courseResponsible) {
-        foundResponsible.push(teacher);
-      }
+  let foundResponsible = [];
+
+  for (let teacher of DATABASE.teachers) {
+    if (teacher.teacherId == course.courseResponsible) {
+      foundResponsible.push(teacher);
     }
-  
-    return foundResponsible;
   }
 
-  function findTeachers(course) {
-    let foundTeacher = [];
-  
-    for (let teacher of DATABASE.teachers) {
-      for (let courseTeacher of course.teachers) {
-        if (courseTeacher == teacher.teacherId) {
-          foundTeacher.push(teacher);
-        }
+  return foundResponsible;
+}
+
+function findTeachers(course) {
+  let foundTeacher = [];
+
+  for (let teacher of DATABASE.teachers) {
+    for (let courseTeacher of course.teachers) {
+      if (courseTeacher == teacher.teacherId) {
+        foundTeacher.push(teacher);
       }
     }
-  
-    return foundTeacher;
   }
 
+  return foundTeacher;
+}
 
-
-  function getStudentById(course) {
+function getStudentById(course) {
   let foundStudent = [];
 
   for (let student of DATABASE.students) {
