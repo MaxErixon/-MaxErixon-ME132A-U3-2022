@@ -133,7 +133,7 @@ function renderStudent (student) {
     div.classList.add('resultstudent')
     wrapper.appendChild(div)
     let p = document.createElement('p')
-    p.classList.add('results')
+    p.classList.add('results1')
     p.innerText =
       student.firstName +
       ' ' +
