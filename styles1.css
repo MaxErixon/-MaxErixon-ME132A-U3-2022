@@ -1,0 +1,47 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrapper{
+    border: solid 5px black;
+    margin: 5px;
+    height: fit-content;
+    
+}
+
+#searchbar{
+    margin: 15px;
+    width: fit-content;
+    
+}
+
+.results{
+  
+    margin: 10px;
+}
+
+#kurs{
+    margin: 5px;
+    border: solid 3px wheat;
+    width: fit-content;
+    padding: 5px;
+    
+}
+
+.passedcourse{
+    width: fit-content;
+    background-color: green;
+    color: white;
+    
+}
+
+.resultcourse{
+ background-color: beige;
+ margin: 15px;
+ border: dotted 5px black;
+}
+
+
+   
+
